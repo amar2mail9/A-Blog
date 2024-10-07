@@ -12,7 +12,7 @@ export default function Home() {
   }, []);
   return (
     <Layout>
-      <h1>Welcome to Amar Blog</h1>
+      <h1>Welcome to Amar Blog helloo a everyone</h1>
     </Layout>
   );
 }
