@@ -7,6 +7,7 @@ import "remixicon/fonts/remixicon.css";
 import Home from "./Components/Page/Home/Home";
 import AboutUs from "./Components/Page/AboutUs";
 import ContactUs from "./Components/Page/ContactUs";
+import Blog from "./Components/Page/Blog/BlogPage";
 
 export default function () {
   // Sate Or Variable
@@ -20,6 +21,7 @@ export default function () {
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/blog" element={<Blog />} />
       </Routes>
     </BrowserRouter>
   );

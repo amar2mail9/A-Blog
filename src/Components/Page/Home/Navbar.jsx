@@ -22,6 +22,10 @@ export default function Navbar() {
       name: "Contact Us",
       path: "/contact-us",
     },
+    {
+      name: "Blog",
+      path: "blog",
+    },
   ];
   // social Media Icon
   const socialMedia = [
