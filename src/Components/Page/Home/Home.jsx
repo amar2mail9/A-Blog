@@ -7,6 +7,8 @@ import BlogImage from "../Blog/BlogImage";
 import BlogContant from "../Blog/BlogContant";
 import BlogUser from "../Blog/BlogUser";
 import BlogRelated from "../Blog/BlogRelated";
+import BlogCategory from "../Blog/BlogCategory";
+import LatestBlog from "../Blog/LatestBlog";
 
 export default function Home() {
   return (
@@ -53,9 +55,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      <h1 className="text-3xl">Latest Blog</h1>
+      <LatestBlog />
       <BlogUser />
       <BlogRelated />
+      <BlogCategory />
     </Layout>
   );
 }

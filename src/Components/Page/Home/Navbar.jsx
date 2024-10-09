@@ -24,7 +24,7 @@ export default function Navbar() {
     },
     {
       name: "Blog",
-      path: "blog",
+      path: "/blog",
     },
   ];
   // social Media Icon

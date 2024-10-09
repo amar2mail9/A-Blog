@@ -4,7 +4,9 @@ function Section01() {
   return (
     <>
       <section>
-        <div></div>
+              <div>
+                  
+        </div>
       </section>
     </>
   );
