@@ -1,85 +1,65 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
-  // state Declination
-
-  const location = useLocation(); // import from react router dom
-
+  const location = useLocation();
   const [showMenuItems, setShowMenuItems] = useState(false);
-  // menu
+  const [showSearch, setShowSearch] = useState(false);
   const menu = [
-    {
-      name: "Home",
-      path: "/",
-    },
-    {
-      name: "About Us",
-      path: "/about-us",
-    },
-    {
-      name: "Contact Us",
-      path: "/contact-us",
-    },
-    {
-      name: "Blog",
-      path: "/blog",
-    },
+    { name: "Home", path: "/" },
+    { name: "About Us", path: "/about-us" },
+    { name: "Contact Us", path: "/contact-us" },
+    { name: "Blog", path: "/blog" },
   ];
-  // social Media Icon
+
   const socialMedia = [
     {
       icon: (
-        <i className="ri-facebook-circle-fill text-4xl text-indigo-600"></i>
+        <i className="ri-facebook-circle-fill text-2xl md:text-3xl text-blue-600"></i>
       ),
       path: "/",
     },
     {
-      icon: <i className="ri-instagram-fill text-4xl text-purple-500"></i>,
+      icon: (
+        <i className="ri-instagram-fill text-2xl md:text-3xl text-pink-600"></i>
+      ),
       path: "/",
     },
     {
-      icon: <i className="ri-twitter-x-line text-3xl text-slate-700"></i>,
+      icon: (
+        <i className="ri-twitter-x-line text-2xl md:text-3xl text-sky-500"></i>
+      ),
       path: "/",
     },
   ];
 
-  // Function
-
-  // toggle menu button
-
   const toggleMenu = () => {
     setShowMenuItems(!showMenuItems);
   };
-
+  const toggleSearch = () => {
+    setShowSearch(!showSearch);
+  };
   return (
     <>
-      <header
-        className="w-full bg-indigo-100  sticky top-0 right-0 "
-        style={{
-          boxShadow: " 0 0 10px rgba( 0, 0, 0, 0.5)",
-        }}
-      >
-        <nav className="flex items-center justify-between py-1   md:w-9/12 w-11/12 mx-auto   ">
-          {/* Company Logo */}
+      <header className="w-full z-50 bg-gradient-to-r from-indigo-400 to-purple-500 sticky top-0 right-0 shadow-lg pt-2 pb-2 md:pt-4 md:pb-4 transition-all duration-300">
+        <nav className="flex items-center md:jus tify-around justify-between w-11/12  md:my-2 mx-auto">
           <div>
-            <img
-              src="https://polytechub.in/wp-content/uploads/2024/05/cropped-cropped-Pngtree_letter_p_3d_company_logo_4173429-removebg-preview-min-50x50.png"
-              alt="polytechub"
-            />
+            <label className="flex items-center font-semibold md:text-3xl text-2xl">
+              <span className="text-white">Poly</span>{" "}
+              <span className="text-yellow-400">Tech</span>
+              <span className="text-orange-300">Hub</span>
+            </label>
           </div>
-          <div className="flex gap-16 items-center ">
-            {/* Menu  items */}
-            <ul className="md:flex gap-4 md:text-lg text-md hidden font-semibold">
+          <div className="flex items-center">
+            <ul className="md:flex gap-4 hidden font-semibold">
               {menu.map((items, index) => {
-                let isActive = location.pathname === items.path;
+                const isActive = location.pathname === items.path;
                 return (
                   <Link
                     to={items.path}
                     key={index}
-                    className={` hover:scale-110 hover:underline-offset-8 hover:underline hover:text-orange-500  ${
-                      isActive ? " text-green-600  " : "text-slate-700"
+                    className={`hover:scale-110  transition-transform md:text-lg hover:underline-offset-8   duration-300 hover:underline hover:text-yellow-400  ${
+                      isActive ? " text-yellow-400  " : "text-slate-100"
                     }`}
                   >
                     <li>{items.name}</li>
@@ -87,44 +67,51 @@ export default function Navbar() {
                 );
               })}
             </ul>
-
-            {/* social Media Icon */}
-            <ul className="hidden gap-3 items-center md:flex">
-              {socialMedia.map((items, index) => {
-                return (
-                  <Link to={items.path} key={index}>
-                    <li>{items.icon}</li>
-                  </Link>
-                );
-              })}
-            </ul>
+            <div className="flex gap-3">
+              <button
+                onClick={toggleSearch}
+                className="text-xl md:hidden text-white font-semibold hover:bg-orange-400 p-1 rounded-full w-10 h-10"
+              >
+                <i className="ri-search-line "></i>
+              </button>
+              <button
+                className="bg-orange-600 w-10 h-10 rounded-full text-white border-none md:hidden block transition duration-300 hover:bg-orange-700"
+                onClick={toggleMenu}
+              >
+                <i className="ri-menu-5-line text-xl"></i>
+              </button>
+            </div>
           </div>
-
-          {/* menu Button */}
-
-          <Button
-            className="bg-orange-500 border-none md:hidden block"
-            onClick={() => {
-              toggleMenu();
-            }}
-          >
-            <i className="ri-menu-5-line text-xl font-bold "></i>
-          </Button>
+          <ul className="hidden md:flex md:gap-3 items-center">
+            {socialMedia.map((items, index) => (
+              <Link to={items.path} key={index}>
+                <li className="transition-transform duration-300 hover:scale-110">
+                  {items.icon}
+                </li>
+              </Link>
+            ))}
+            <button
+              onClick={toggleSearch}
+              className="text-xl text-white font-semibold hover:bg-orange-400 p-1 rounded-full w-10 h-10"
+            >
+              <i className="ri-search-line "></i>
+            </button>
+          </ul>
         </nav>
       </header>
-      {/* Section for mobiles */}
 
       {showMenuItems && (
-        <div className="inset  top-0 z-10 w-full md:hidden block ">
-          <ul className="flex flex-wrap gap-2  bg-orange-200 py-3 text-lg font-semibold text-orange-600 rounded-md shadow-xl">
+        <div className="fixed h-screen top-14 rounded-md md:hidden  duration-200 delay-300 left-0 z-50 w-full  p-2 " onClick={toggleMenu}>
+          <ul className="flex flex-col gap-2 py-4 text-lg bg-orange-300 font-semibold text-white rounded-md shadow-xl transition-all duration-300">
             {menu.map((items, index) => {
-              let isActive = location.pathname === items.path;
+              const isActive = location.pathname === items.path;
               return (
                 <Link
                   key={index}
                   to={items.path}
-                  className={`px-4 w-full py-1 hover:bg-orange-100 ${
-                    isActive ? "bg-orange-100" : null
+                  onClick={() => setShowMenuItems(false)} // Close menu on item click
+                  className={`px-4 py-2 w-full hover:bg-orange-400 transition duration-300 ${
+                    isActive ? "bg-orange-500" : ""
                   }`}
                 >
                   <li>{items.name}</li>
@@ -132,6 +119,22 @@ export default function Navbar() {
               );
             })}
           </ul>
+        </div>
+      )}
+
+      {showSearch && (
+        <div className="fixed   h-screen duration-200 delay-300 left-0 z-50 w-full   bg-indigo-50   flex items-center justify-center md:px-16 px-4 flex-col ">
+          <input
+            placeholder="search..."
+            type="text"
+            className="px-4 border bg-indigo-50 text-xl border-slate-300 outline-indigo-500  py-2 w-full rounded-full md:w-[90%]"
+          />
+          <button
+            className="bg-orange-500 px-6 py-2 rounded-full  text-white mt-6 text-xl hover:bg-orange-600"
+            onClick={toggleSearch}
+          >
+            Search
+          </button>
         </div>
       )}
     </>

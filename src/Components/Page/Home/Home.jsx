@@ -13,16 +13,6 @@ import LatestBlog from "../Blog/LatestBlog";
 export default function Home() {
   return (
     <Layout>
-      <h1>
-        Welcome to Amar Blog helloo a everyone
-        <Button
-          onClick={() => {
-            Swal.fire("SweetAlert2 is working!");
-          }}
-        >
-          click me
-        </Button>
-      </h1>
       <BlogImage />
       <BlogContant />
       <section className="text-gray-600 body-font">
