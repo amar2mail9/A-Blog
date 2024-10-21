@@ -10,6 +10,9 @@ export default function Home() {
     <Layout>
       {/* About */}
       <Hero />
+      <h1 className="text-center text-4xl mt-8 text-orange-500 animate-pulse font-semibold ">
+        Website Under Process...
+      </h1>
     </Layout>
   );
 }

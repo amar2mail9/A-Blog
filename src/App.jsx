@@ -1,32 +1,56 @@
-import React from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "remixicon/fonts/remixicon.css";
+import "animate.css";
 
 // My Components
 import Home from "./Components/Page/Home/Home";
 import AboutUs from "./Components/Page/AboutUs";
 import ContactUs from "./Components/Page/ContactUs";
-
 import ErrorPage from "./Components/Page/Error/ErrorPage";
-import "animate.css";
 import BlogPage from "./Components/Page/Blog/BlogPage";
 
-export default function () {
-  // Sate Or Variable
+// Blog Context Api
+const TechBlogContext = createContext();
 
-  // Function Or Mrthod
+export const useTechBlog = () => {
+  return useContext(TechBlogContext);
+};
 
-  // Return Statements
+export default function App() {
+  // State Or Variable
+  const [techBlog, setTechBlog] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchTechBlog = async () => {
+    setIsLoading(true);
+    try {
+      let res = await fetch("https://dummyjson.com/posts");
+      let result = await res.json();
+      setTechBlog(result.posts);
+    } catch (error) {
+      console.error("Error fetching tech blog:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchTechBlog();
+  }, []);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="blog-page" element={<BlogPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-    </BrowserRouter>
+    <TechBlogContext.Provider value={{ techBlog, isLoading }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/blog-page" element={<BlogPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </BrowserRouter>
+    </TechBlogContext.Provider>
   );
 }
