@@ -20,42 +20,42 @@ export default function Footer() {
             <h2 className="font-semibold mb-2">Quick Links</h2>
             <ul>
               <li className="mb-1 hover:text-indigo-500">
-                <a href="#">Home</a>
+                <Link to={"/"}>Home</Link>
               </li>
               <li className="mb-1 hover:text-indigo-500">
-                <a href="#">About</a>
+                <Link to={"/about-us"}>About</Link>
               </li>
               <li className="mb-1 hover:text-indigo-500">
-                <a href="#">Blog</a>
+                <Link to={"/blog-page"}>Blog</Link>
               </li>
               <li className="mb-1 hover:text-indigo-500">
-                <a href="#">Contact</a>
+                <Link to={"/contact-us"}>Contact</Link>
               </li>
             </ul>
           </center>
 
           <center>
             <h2 className="font-semibold mb-2">Social Media</h2>
-            <ul className="flex space-x-4">
+            <ul className="flex space-x-4 ">
               <li>
-                <a href="#" className="hover:text-indigo-500">
+                <Link to={"#"} className="hover:text-indigo-500">
                   <i className="ri-facebook-circle-fill text-2xl"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-indigo-500">
+                <Link to="#" className="hover:text-indigo-500">
                   <i className="ri-twitter-x-fill text-2xl"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-indigo-500">
+                <Link to="#" className="hover:text-indigo-500">
                   <i className="ri-instagram-fill text-2xl"></i>
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-indigo-500">
+                <Link to="#" className="hover:text-indigo-500">
                   <i className="ri-linkedin-fill text-2xl"></i>
-                </a>
+                </Link>
               </li>
             </ul>
           </center>
