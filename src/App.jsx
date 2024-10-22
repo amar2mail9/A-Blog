@@ -10,7 +10,8 @@ import AboutUs from "./Components/Page/AboutUs";
 import ContactUs from "./Components/Page/ContactUs";
 import ErrorPage from "./Components/Page/Error/ErrorPage";
 import BlogPage from "./Components/Page/Blog/BlogPage";
-import SlugBlogPage from "./Components/Page/BLog/SlugBlogPage";
+// import SlugBlogPage from "./Components/Page/BLog/SlugBlogPage";
+import SlugBlogPage from "./Components/Page/Blog/SlugBlogPage";
 
 // Blog Context API
 const TechBlogContext = createContext();
