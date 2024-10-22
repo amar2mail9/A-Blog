@@ -81,7 +81,7 @@ export default function Footer() {
           <center>
             <h2 className="font-semibold mb-2">Contact Us</h2>
             <p className="mb-1">Email: amar47kumar47@gmail.com</p>
-            <p>Phone: +9608553167</p>
+            <p>Phone: +919608553167</p>
           </center>
         </div>
 

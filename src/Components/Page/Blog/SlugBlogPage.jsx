@@ -19,8 +19,12 @@ function SlugBlogPage() {
           <div className="flex justify-center items-center w-full h-screen">
             <Spinner variant="primary" />
           </div>
-        ) : (
+        ) : individualBlog ? (
           <h1>{individualBlog.title}</h1>
+        ) : (
+          <p className="text-rose-500 text-2xl font-semibold font-mono text-center">
+            Blog Not Found
+          </p>
         )}
       </section>
     </Layout>

@@ -25,7 +25,6 @@ function TechnologyBlog() {
           </p>
         </motion.h2>
       </AnimatePresence>
-
       {isLoading ? (
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -35,7 +34,7 @@ function TechnologyBlog() {
         >
           <Spinner animation="border" variant="info" />
         </motion.div>
-      ) : (
+      ) : techBlog.length > 0 ? (
         <div className="grid gap-8 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
           {techBlog.map((item, index) => {
             return (
@@ -74,8 +73,13 @@ function TechnologyBlog() {
             );
           })}
         </div>
+      ) : (
+        <center>
+          <h1 className="text-rose-400 text-3xl">
+            Internal Sever Error Retry...
+          </h1>
+        </center>
       )}
-      <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4"></div>
     </section>
   );
 }

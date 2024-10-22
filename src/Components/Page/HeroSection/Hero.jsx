@@ -9,14 +9,13 @@ const Hero = () => {
         {/* Text Section */}
         <div className="w-full md:w-1/2  text-center md:text-left mb-8 md:mb-0">
           <motion.h1
-            className="text-4xl md:text-5xl flex gap-2 items-center font-bold leading-tight mb-6"
+            className="text-4xl md:text-5xl flex gap-2 items-center xl:flex-row lg:flex-col md:flex-col  flex-col  font-bold leading-tight mb-6"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            Welcome to{" "}
-            <span className="text-indigo-700">
-              {" "}
+            <span className="animate-bounce"> Welcome to </span>
+            <span className="text-indigo-700 animate-pulse">
               Polytec<span className="text-green-500">Hub</span>
             </span>
           </motion.h1>
@@ -34,7 +33,7 @@ const Hero = () => {
 
           <div className="flex flex-col md:flex-row justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-4">
             <motion.button
-              className="bg-orange-500 text-white py-2 px-6 rounded-md hover:bg-pink-600 transition duration-300"
+              className="bg-orange-500 text-white py-2 px-6 rounded-md hover:bg-orange-600 transition duration-300 "
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.7 }}
@@ -43,7 +42,7 @@ const Hero = () => {
             </motion.button>
 
             <motion.button
-              className="border-2 border-orange-500 text-indigo-500 py-2 px-6 rounded-md hover:bg-pink-500 hover:text-white transition duration-300"
+              className="border-2 border-orange-500 text-indigo-100 py-2 px-6 rounded-md hover:bg-orange-500 hover:border-0 hover:text-white transition duration-300"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.8 }}
