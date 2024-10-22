@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "remixicon/fonts/remixicon.css";
@@ -75,6 +75,7 @@ export default function App() {
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/blog-page" element={<BlogPage />} />
           <Route path="/blog-page/:title" element={<SlugBlogPage />} />
+
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
