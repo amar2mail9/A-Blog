@@ -30,7 +30,7 @@ function Navbar() {
 
   return (
     <>
-      <header className="w-full sticky top-0 z-50 bg-gradient-to-r from-indigo-500 via-pink-500 to-orange-500 py-3 shadow-md shadow-[#454545] rounded-md">
+      <header className="w-full sticky top-0 z-50 bg-gradient-to-r from-indigo-500 via-pink-500 to-orange-500 py-3  ">
         <nav className="md:w-10/12 w-11/12 mx-auto flex items-center justify-between">
           <div>
             <Link to={"/"}>

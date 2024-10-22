@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTechBlog } from "../../../App";
 import { Spinner } from "react-bootstrap";
 
 function TechnologyBlog() {
-  const { techBlog, isLoading } = useTechBlog();
+  const { fetchData, isLoading, techBlog } = useTechBlog();
+
+  useEffect(() => {
+    fetchData.fetchTechBlog();
+  }, []);
 
   return (
     <section>
@@ -60,7 +64,12 @@ function TechnologyBlog() {
                     ? `${item.body.slice(0, 70)}...`
                     : item.body}
                 </p>{" "}
-                <Link className="text-sky-400 mt-1">Read More</Link>
+                <Link
+                  className="text-sky-400 mt-1"
+                  to={`/blog-page/${encodeURIComponent(item.title)}`}
+                >
+                  Read More
+                </Link>
               </motion.div>
             );
           })}

@@ -10,8 +10,9 @@ import AboutUs from "./Components/Page/AboutUs";
 import ContactUs from "./Components/Page/ContactUs";
 import ErrorPage from "./Components/Page/Error/ErrorPage";
 import BlogPage from "./Components/Page/Blog/BlogPage";
+import SlugBlogPage from "./Components/Page/BLog/SlugBlogPage";
 
-// Blog Context Api
+// Blog Context API
 const TechBlogContext = createContext();
 
 export const useTechBlog = () => {
@@ -19,35 +20,61 @@ export const useTechBlog = () => {
 };
 
 export default function App() {
-  // State Or Variable
+  // State variables
   const [techBlog, setTechBlog] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [individualBlog, setIndividualBlog] = useState("");
 
-  const fetchTechBlog = async () => {
-    setIsLoading(true);
-    try {
-      let res = await fetch("https://dummyjson.com/posts");
-      let result = await res.json();
-      setTechBlog(result.posts);
-    } catch (error) {
-      console.error("Error fetching tech blog:", error);
-    } finally {
-      setIsLoading(false);
-    }
+  // Fetching functions
+  const fetchData = {
+    fetchTechBlog: async function () {
+      setIsLoading(true);
+      try {
+        let res = await fetch("https://dummyjson.com/posts");
+        let result = await res.json();
+        setTechBlog(result.posts);
+      } catch (error) {
+        console.error("Error fetching tech blog:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    fetchIndividualBlog: async function (title) {
+      try {
+        setIsLoading(true);
+        let res = await fetch("https://dummyjson.com/posts");
+        let result = await res.json();
+
+        const blog = result.posts.find((post) => {
+          return post.title.toLowerCase() === title.toLowerCase();
+        });
+
+        if (blog) {
+          setIndividualBlog(blog);
+        } else {
+          setIndividualBlog(null);
+          console.error("Blog Post Not Found");
+        }
+
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        console.error(error);
+      }
+    },
   };
 
-  useEffect(() => {
-    fetchTechBlog();
-  }, []);
-
   return (
-    <TechBlogContext.Provider value={{ techBlog, isLoading }}>
+    <TechBlogContext.Provider
+      value={{ techBlog, isLoading, fetchData, individualBlog }}
+    >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/blog-page" element={<BlogPage />} />
+          <Route path="/blog-page/:title" element={<SlugBlogPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
