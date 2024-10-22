@@ -32,7 +32,7 @@ function TechnologyBlog() {
           transition={{ duration: 0.8 }}
           className=" flex justify-center animate-bounce"
         >
-          <Spinner animation="border" variant="info" />
+          <Spinner animation="border" variant="warning" />
         </motion.div>
       ) : techBlog.length > 0 ? (
         <div className="grid gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid-cols-1">
