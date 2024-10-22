@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -34,23 +35,26 @@ const Hero = () => {
           </motion.p>
 
           <div className="flex flex-col md:flex-row justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-4">
-            <motion.button
-              className="bg-orange-500 text-white py-2 px-6 rounded-md hover:bg-orange-600 transition duration-300 "
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.7 }}
-            >
-              Get Started <i className="ri-arrow-right-up-line"></i>
-            </motion.button>
-
-            <motion.button
-              className="border-2 border-orange-500 text-indigo-100 py-2 px-6 rounded-md hover:bg-orange-500 hover:border-0 hover:text-white transition duration-300"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
-            >
-              Learn More <i className="ri-arrow-right-up-line"></i>
-            </motion.button>
+            <Link to={"/blog-page"}>
+              <motion.button
+                className="bg-orange-500 text-white py-2 px-6 rounded-md hover:bg-orange-600 transition duration-300 "
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.7 }}
+              >
+                Get Started <i className="ri-arrow-right-up-line"></i>
+              </motion.button>
+            </Link>
+            <Link to={"/blog-page"}>
+              <motion.button
+                className="border-2 border-orange-500 text-indigo-100 py-2 px-6 rounded-md hover:bg-orange-500 hover:border-0 hover:text-white transition duration-300"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.8 }}
+              >
+                Learn More <i className="ri-arrow-right-up-line"></i>
+              </motion.button>
+            </Link>
           </div>
         </div>
 
