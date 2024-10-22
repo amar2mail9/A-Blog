@@ -15,9 +15,11 @@ const Hero = () => {
             transition={{ duration: 1 }}
           >
             <span className="animate-bounce"> Welcome to </span>
-            <span className="text-indigo-700 animate-pulse">
-              Polytec<span className="text-green-500">Hub</span>
-            </span>
+            <div>
+              <span className="text-indigo-700 overflow-hidden inline-block whitespace-nowrap animate-typing">
+                POLYTEC<span className="text-green-500">HUB</span>
+              </span>
+            </div>
           </motion.h1>
 
           <motion.p
