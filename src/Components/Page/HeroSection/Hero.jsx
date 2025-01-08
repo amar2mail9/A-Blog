@@ -15,7 +15,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <span className="animate-bounce"> Welcome to </span>
+            <span className=""> Welcome to </span>
             <div>
               <span className="text-indigo-700 overflow-hidden inline-block whitespace-nowrap animate-typing">
                 POLYTEC<span className="text-green-500">HUB</span>
@@ -34,25 +34,16 @@ const Hero = () => {
             and educate.
           </motion.p>
 
-          <div className="flex flex-col md:flex-row justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-4">
+          <div className="">
+
             <Link to={"/blog-page"}>
               <motion.button
-                className="bg-orange-500 text-white py-2 px-6 rounded-md hover:bg-orange-600 transition duration-300 "
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, delay: 0.7 }}
-              >
-                Get Started <i className="ri-arrow-right-up-line"></i>
-              </motion.button>
-            </Link>
-            <Link to={"/blog-page"}>
-              <motion.button
-                className="border-2 border-orange-500 text-indigo-100 py-2 px-6 rounded-md hover:bg-orange-500 hover:border-0 hover:text-white transition duration-300"
+                className=" text-indigo-100 py-2 px-6 rounded-md hover:bg-gray-900  bg-gray-600 animate-bounce duration-300"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.8 }}
               >
-                Learn More <i className="ri-arrow-right-up-line"></i>
+                Visit Blog <i className="ri-arrow-right-up-line"></i>
               </motion.button>
             </Link>
           </div>
