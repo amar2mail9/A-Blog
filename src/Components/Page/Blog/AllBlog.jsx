@@ -82,6 +82,17 @@ function AllBlog() {
                                                 <h2 className='text-[0.9rem] font-semibold'>
                                                     {item?.title?.rendered.length > 30 ? `${item?.title?.rendered.slice(0, 30)}...` : item?.title?.rendered || "Untitled"}
                                                 </h2>
+                                                <div
+                                                dangerouslySetInnerHTML={{
+                                                    __html: item?.excerpt?.rendered
+                                                        ? item.excerpt?.rendered.length > 180
+                                                            ? `${itemt.excerpt?.rendered.slice(0, 180)}[...]`
+                                                            : item.excerpt?.rendered
+                                                        : 'No excerpt available',
+                                                }}
+                                            />
+
+
                                             </div>
                                         </Link>
                                     ))}
