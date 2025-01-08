@@ -52,10 +52,22 @@ function AllBlog() {
 
     return (
         <Layout>
-            <section className='flex w-11/12 mx-auto mt-6 justify-between'>
-                <div className='w-[70%] h-screen bg-orange-100 px-4 py-6 rounded-lg'>
+            <section className='lg:flex md:w-11/12 w-full mx-auto mt-6 justify-between'>
+                <div className='lg:w-[70%] w-full px-3  bg-orange-100 lg:px-4 py-6 rounded-lg'>
                     <div className='flex justify-between items-center'>
                         <h1 className='text-xl font-semibold text-gray-800'>Blog Page</h1>
+
+                        {/* seacrh */}
+                        <div className='flex items-center lg:hidden  bg-orange-50 text-orange-500 mb-2 lg:w-full w-[60%] h-10 border rounded-lg'>
+                            <FiSearch className='text-xl h-10 ml-2' />
+                            <input
+                                type="text"
+                                placeholder="Search..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className='w-full bg-transparent h-full rounded-md px-2 outline-none'
+                            />
+                        </div>
                         <select name="" id="">
                             <option value="">All Categories</option>
                         </select>
@@ -68,31 +80,67 @@ function AllBlog() {
                             </div>
                         ) : (
                             posts.length !== 0 ? (
-                                <div className='w-full grid grid-cols-4 gap-4 mt-5'>
+                                <div className='w-full grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1  gap-4 mt-5'>
                                     {posts.map((item) => (
                                         <Link to={`/blog-page/${item.slug}`} key={item.id} className='w-full'>
-                                            <div className='p-3 bg-orange-50 shadow-lg rounded-lg'>
-                                                <div className='flex justify-center w-full h-28'>
+                                            <div className='p-3 sm:block hidden bg-orange-50 shadow-lg rounded-lg hover:scale-105  hover: duration-500'>
+                                                <div className='flex justify-center w-full rounded-lg '>
                                                     <img
                                                         src={item?.rttpg_featured_image_url?.thumbnail?.[0]}
                                                         alt={item?.title?.rendered}
-                                                        className='object-cover object-center bg-gray-200'
+                                                        className='object-cover w-full h-36 object-center rounded-lg  bg-gray-200'
                                                     />
                                                 </div>
                                                 <h2 className='text-[0.9rem] font-semibold'>
                                                     {item?.title?.rendered.length > 30 ? `${item?.title?.rendered.slice(0, 30)}...` : item?.title?.rendered || "Untitled"}
                                                 </h2>
                                                 <div
-                                                dangerouslySetInnerHTML={{
-                                                    __html: item?.excerpt?.rendered
-                                                        ? item.excerpt?.rendered.length > 180
-                                                            ? `${itemt.excerpt?.rendered.slice(0, 180)}[...]`
-                                                            : item.excerpt?.rendered
-                                                        : 'No excerpt available',
-                                                }}
-                                            />
 
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: item?.excerpt?.rendered
+                                                            ? item.excerpt?.rendered.length > 100
+                                                                ? `${item.excerpt?.rendered.slice(0, 100)}[...]`
+                                                                : item.excerpt?.rendered
+                                                            : 'No excerpt available',
+                                                    }}
+                                                />
+                                                <Link to={`/blog-page/${item.slug}`} className='text-orange-500 hover:text-orange-600 text-[0.8rem] duration-500'>Read More</Link>
 
+                                            </div>
+
+                                            <div
+                                                key={item.id}
+                                                className="bg-white  sm:hidden items-center shadow-lg rounded-lg p-3 flex gap-5"
+                                            >
+                                                {/* Post Thumbnail */}
+                                                <img
+                                                    src={
+                                                        item?.rttpg_featured_image_url?.thumbnail?.[0] ||
+                                                        'https://via.placeholder.com/120'
+                                                    }
+                                                    alt={item.title?.rendered || 'Untitled'}
+                                                    className="w-20 rounded-full h-20 object-cover"
+                                                />
+                                                {/* Post Details */}
+                                                <div className="w-full">
+                                                    <h3 className="text-[1rem] font-semibold">
+                                                        {item.title?.rendered?.length > 60
+                                                            ? `${item.title?.rendered.slice(0, 60)}...`
+                                                            : item.title?.rendered || 'Untitled Post'}
+                                                    </h3>
+                                                    {/* Post Excerpt */}
+                                                    <div
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: item.excerpt?.rendered
+                                                                ? item.excerpt?.rendered.length > 180
+                                                                    ? `${item.excerpt?.rendered.slice(0, 180)}[...]`
+                                                                    : item.excerpt?.rendered
+                                                                : 'No excerpt available',
+                                                        }}
+                                                    />
+
+                                                    
+                                                </div>
                                             </div>
                                         </Link>
                                     ))}
@@ -102,7 +150,7 @@ function AllBlog() {
                     </div>
                 </div>
 
-                <div className='w-[28%]  bg-orange-200 px-4 py-6 rounded-lg'>
+                <div className='lg:w-[28%] lg:block hidden  bg-orange-200 px-4 py-6 rounded-lg'>
                     <div className='flex items-center bg-orange-50 text-orange-500 mb-2 w-full h-10 border rounded-lg'>
                         <FiSearch className='text-xl h-10 ml-2' />
                         <input
@@ -139,10 +187,10 @@ function AllBlog() {
                         <h2 className='text-lg font-normal text-gray-600'>Categories({category.length})</h2>
                         <div className='px-4 flex flex-col gap-2'>
                             {category.map((item) => (
-                              <Link to={`/category/${item.slug}`} className='text-sky-600 hover:text-gray-800 text-[0.8rem] duration-500' key={item.id}>
-                              {item.name} {`(${item.count})`}
-                          </Link>
-                          
+                                <Link to={`/category/${item.slug}`} className='text-sky-600 hover:text-gray-800 text-[0.8rem] duration-500' key={item.id}>
+                                    {item.name} {`(${item.count})`}
+                                </Link>
+
                             ))}
                         </div>
                     </div>

@@ -33,7 +33,7 @@ export default function SingleBlogPage() {
 
     return (
         <Layout>
-            <div className=" mx-auto mt-6 w-8/12 ">
+            <div className=" mx-auto mt-6 lg:w-8/12  sm:w-10/12 px-1">
                 {loading ? (
                     <div className='flex justify-center'>
                         <Spinner className='text-orange-500 text-xl' />
